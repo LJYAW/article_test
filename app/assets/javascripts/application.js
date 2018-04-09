@@ -13,3 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.min
+//= require template.min
+//= require umeditor.config
+//= require umeditor
+//= require zh-cn
+
