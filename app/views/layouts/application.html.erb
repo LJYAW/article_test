@@ -9,4 +9,10 @@
   <body class="controller-<%= controller_name %> action-<%= action_name %>">
     <%= yield %>
   </body>
+
+   <% if content_for?(:scripts) %>
+      <%= yield :scripts %>
+    <% else %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+    <% end %>
 </html>

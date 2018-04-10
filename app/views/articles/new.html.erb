@@ -1,14 +1,23 @@
 <%= stylesheet_link_tag "https://images.cdn.uniqueway.com/umeditor_upyun/themes/default/css/umeditor.css" %>
 <% content_for :scripts do %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag "/umeditor/third-party/jquery.min.js" %>
-  <%= javascript_include_tag "/umeditor/umeditor.config" %>
-  <%= javascript_include_tag "/umeditor/third-party/template.min" %>
-  <%= javascript_include_tag "/umeditor/umeditor" %>
-  <%= javascript_include_tag "/umeditor/lang/zh-cn/zh-cn" %>
+  <%= javascript_include_tag "/umeditor/third-party/template.min.js" %>
+  <%= javascript_include_tag "/umeditor/umeditor.config.js" %>
+  <%= javascript_include_tag "https://images.cdn.uniqueway.com/umeditor_upyun/umeditor.min.js" %>
+  <%= javascript_include_tag "/umeditor/lang/zh-cn/zh-cn.js" %>
 <% end %>
 <div class="new_content">
   <h1>添加新文章</h1>
+  <% if @article.errors.any? %>
+    <div class="alert alert-danger">
+      <strong>有<%= @article.errors.count %>个问题导致无法提交</strong>
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= form_for @article do |f| %>
   <div class="form-actions">
     <%= f.submit "保存", class: "btn btn-success" %>
