@@ -7,7 +7,7 @@
   <%= javascript_include_tag "/umeditor/lang/zh-cn/zh-cn.js" %>
 <% end %>
 <div class="new_content">
-  <h1>添加新文章</h1>
+  <h1>编辑文章</h1>
   <% if @article.errors.any? %>
     <div class="alert alert-danger">
       <strong>有<%= @article.errors.count %>个问题导致无法提交</strong>
@@ -18,10 +18,10 @@
       </ul>
     </div>
   <% end %>
-  <%= form_for @article do |f| %>
+  <%= form_for(@article, url: admin_article_path(@article)) do |f| %>
   <div class="form-actions">
     <%= f.submit "保存", class: "btn btn-success" %>
-    <%= link_to "返回", articles_path, class: "btn btn-primary" %>
+    <%= link_to "返回", admin_articles_path, class: "btn btn-primary" %>
     <div class="form-inputs">
       <%= f.label '文章标题(title)'%>
       <%= f.text_field :title %>
