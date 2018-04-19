@@ -42,6 +42,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'select2-rails', '~>4.0.3'
+  gem 'jquery-rails'
 end
 
 group :development do

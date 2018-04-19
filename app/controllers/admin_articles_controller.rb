@@ -2,7 +2,7 @@ class AdminArticlesController < ApplicationController
   # before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :set_content_params, only: [:new, :edit, :create]
   def index
-    @articles = Article.all
+    @articles = Article.all.filter(params)
   end
 
   def new
@@ -47,12 +47,12 @@ class AdminArticlesController < ApplicationController
     @content_params = 'article[content]'
   end
 
+  def filter_params
+    params.permit(:category, :is_publish, :chosen, :article_type,
+                  :create_start_date, :create_end_date)
+  end
+
   def set_article
     @article = Article.find(params[:id])
   end
-
-  def filter_params
-
-  end
-
 end
